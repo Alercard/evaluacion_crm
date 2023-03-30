@@ -41,6 +41,8 @@ import Client from './components/Client'
 import CampaingsMain from './components/CampaingsMain'
 import CouponsMain from './components/CouponsMain'
 import Error from './components/Error'
+import Peers from './components/Peers'
+
 moment.locale('es');
 const router = createRouter({
     history: createWebHistory(),
@@ -56,6 +58,7 @@ app.use(VueAxios, axios);
 app.use(useValidate);
 app.component('CampaingsMain', CampaingsMain);
 app.component('CouponsMain', CouponsMain);
+app.component('Peers', Peers);
 app.component('Calendar', Calendar);
 app.component('Calendar', Calendar);
 app.component('MultiSelect', MultiSelect);
