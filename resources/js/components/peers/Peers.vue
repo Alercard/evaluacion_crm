@@ -68,6 +68,10 @@ export default {
     },
     methods: {
         requestApiPeers() {
+            if (this.data === '') {
+                this.error = 'Debe ingresar los datos';
+                return;
+            }
             const url = '/api/peer/process';
             const data = {
                 data: this.data

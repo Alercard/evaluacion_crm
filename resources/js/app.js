@@ -41,7 +41,7 @@ import Client from './components/Client'
 import CampaingsMain from './components/CampaingsMain'
 import CouponsMain from './components/CouponsMain'
 import Error from './components/Error'
-import Peers from './components/Peers'
+import Peers from './components/peers/Peers'
 
 moment.locale('es');
 const router = createRouter({
