@@ -23,8 +23,7 @@
         "mailchimp/marketing": "^3.0",
         "mailchimp/transactional": "^1.0",
         "mpociot/documentarian": "dev-master as 0.4.0",
-        "mpociot/laravel-apidoc-generator": "dev-master",
-        "yajra/laravel-oci8": "^8.6"
+        "mpociot/laravel-apidoc-generator": "dev-master"
     },
     "require-dev": {
         "facade/ignition": "^2.5",
