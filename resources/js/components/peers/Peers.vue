@@ -1,12 +1,13 @@
 <template>
     <h1>PARES (Vue Version)</h1>
-    <a href="/documentation?bash#pares-de-numeros" target="_blank">Ver Documentacion</a>
+    <a href="/documentation?bash#pares-de-nmeros" target="_blank">Ver Documentación</a>
     <div class="form-group p-fluid w-full" >
         <label>Data <strong style="color: red"> *</strong>:</label>
         <textarea
             class="form-control w-full"
             v-model.trim.lazy="data"
             required
+            rows="4"
         >
         </textarea>
     </div>
@@ -37,6 +38,31 @@
         <span class="text-light">{{result}}</span>
     </div>
 
+    <div class="form-group p-fluid w-full ">
+        <h2>Histórico</h2>
+        <div v-for="history in histories" :key="history.key" class="p-3 border border-primary">
+            <div class="">
+                <span class="mb-0 font-weight-bold">Request Inicio: </span>
+                <span>{{ `${history.request_init.getFullYear()}-${history.request_init.getMonth()}-${history.request_init.getDate()} ${history.request_init.getHours()}:${history.request_init.getMinutes()}:${history.request_init.getSeconds()}` }}</span>
+            </div>
+            <div>
+                <span class="mb-0 font-weight-bold">Data: </span>
+                <p>
+                    {{ history.line1 }}<br/>
+                    {{ history.line2 }}
+                </p>
+            </div>
+            <div>
+                <span class="mb-0 font-weight-bold">Resultado: </span>
+                <span>{{ history.result }}</span>
+            </div>
+            <div class="d-flex space-between">
+                <span class="mb-0 font-weight-bold">Tiempo de Ejecución: </span>
+                <span>{{ history.result_time_hours }} horas, {{ history.result_time_minutes }} mins, {{ history.result_time_seconds }} segs, {{ history.result_time_ms }} ms</span>
+            </div>
+        </div>
+    </div>
+
 </template>
 
 <script>
@@ -49,7 +75,8 @@ export default {
             data: '',
             result: 0,
             error: '',
-            processing: false
+            processing: false,
+            histories: []
         }
     },
     watch: {
@@ -86,6 +113,7 @@ export default {
             };
             this.processing=true;
             this.error=''
+            const request_init = new Date();
             axios.post(url, data, config)
                 .then(response => {
                     this.result = response.data.results;
@@ -97,6 +125,23 @@ export default {
                 })
                 .finally(() => {
                     this.processing = false;
+                    const result_time = new Date();
+                    const diffMs = result_time - request_init;
+                    const secs = (diffMs / 1000)
+                    const mins = (secs / 60)
+                    this.histories.unshift({
+                        key: this.histories.length,
+                        data: this.data,
+                        line1: this.data.split('\n')[0],
+                        line2: this.data.split('\n')[1],
+                        request_init: request_init,
+                        result: this.result,
+                        result_time: result_time,
+                        result_time_hours: Math.round((mins / 60) % 24),
+                        result_time_minutes: Math.round(mins % 60),
+                        result_time_seconds: Math.round(secs % 60),
+                        result_time_ms: diffMs
+                    })
                 })
         }
     },
