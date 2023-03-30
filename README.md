@@ -6,12 +6,15 @@
 - MySql
 
 ## Instalación
-- Ejecutar Composer install
-- Copiar el archivo .env_original (cp .env_original .env)
+- Ejecutar: composer install --ignore-platform-req=ext-oci8
+- Copiar: el archivo .env_original y llamarlo .env en la raiz del proyecto (cp .env_original .env)
 - Modificar variables del archivo .env de acuedo al ambiente
-- Crear App_Key -> ejecutar php artisan key:generate
-- Ejecutar php artisan migrate
-- Ejecutar npm install
+- Crear bases de datos y subir los respaldos de las bases de datos api.sql y crm.sql
+- Ejecutar: npm install --force
+
+## Ejecucion en ambiente de desarrollo
+- Ejecutar en una consola: npm run watch
+- Ejecutar en otra consola: php artisan serve
 
 ## About Laravel
 
