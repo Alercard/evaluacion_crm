@@ -2,7 +2,6 @@
 
 namespace App\Core\Peer\Process;
 
-use App\Core\Peer\Exceptions\ValuesNotBetweenRangeAcceptedException;
 use App\Core\Peer\Exceptions\ValuesNotUniqueException;
 use App\Core\Peer\Validations\ArrayLengthValidate;
 use App\Core\Peer\Validations\ArrayValueValidate;

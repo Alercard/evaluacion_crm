@@ -1,5 +1,6 @@
 <template>
     <h1>PARES (Vue Version)</h1>
+    <a href="/documentation?bash#pares-de-numeros" target="_blank">Ver Documentacion</a>
     <div class="form-group p-fluid w-full" >
         <label>Data <strong style="color: red"> *</strong>:</label>
         <textarea
