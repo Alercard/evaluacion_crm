@@ -1,9 +1,10 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\TestFLC\Api\v1\ApiPeerController;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Route; 
-use \App\Http\Middleware\EnsureUserIsValid; 
+use Illuminate\Support\Facades\Route;
+use \App\Http\Middleware\EnsureUserIsValid;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,16 +22,19 @@ $api->version('v1', [], function ($api) {
     $api->post('register', 'App\Http\Controllers\AuthController@register');
 });
 
-$api->version('v1', ['middleware' => [EnsureUserIsValid::class]], function ($api) { 
-    $api->post('login', 'App\Http\Controllers\AuthController@login'); 
+$api->version('v1', ['middleware' => [EnsureUserIsValid::class]], function ($api) {
+    $api->post('login', 'App\Http\Controllers\AuthController@login');
 });
 
 $api->version('v1', ['middleware' => [EnsureUserIsValid::class, 'auth:sanctum']], function ($api) {
     $api->get('logout', 'App\Http\Controllers\AuthController@logout');
-}); 
+});
 
 $api->version('v1', ['middleware' => ['api.throttle', 'auth:sanctum'], 'limit' => 200, 'expires' => 5], function ($api) {
     $api->get('asesores', 'App\Http\Controllers\UsersController@getAsesores');
 
 });
- 
+
+$api->version('v1', ['middleware' => ['api.throttle', 'auth:sanctum'], 'limit' => 200, 'expires' => 5], function ($api) {
+    $api->post('peer/process', [ApiPeerController::class, 'processPeers']);
+});

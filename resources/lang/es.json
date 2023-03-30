@@ -1,0 +1,10 @@
+{
+    "Data must have two lines":                    "La data debe tener 2 lineas",
+    "Line 1 must have one space and only numbers": "La linea 1 debe tener un solo espacio y solo debe tener numeros enteros",
+    "Line 2 must have only spaces and numbers":    "La linea 2 debe tener solo espacios y numeros enteros",
+    "Line 1: Size must be between range accepted": "En la linea 1, el tamaño no esta en un rango aceptado",
+    "Value not between range accepted":            "El valor no esta en un rango aceptado",
+    "Values not equal N":                          "La cantidad de valores no es igual a N",
+    "Values not between range accepted":           "Los valores deben estar en un rango aceptado",
+    "Values must be unique":                       "Los valores deben ser unicos"
+}
