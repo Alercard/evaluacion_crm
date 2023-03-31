@@ -18,7 +18,7 @@ use App\Http\Controllers\TestFLC\PeerController;
 |
 */
 require __DIR__.'/auth.php';
-require __DIR__.'/services.php';
+//require __DIR__.'/services.php';
 
 Route::middleware([UserAuth::class])->group(function () {
     Route::get('login_sugar', [AuthSugarController::class, 'index'])->name('login_sugar.index');
