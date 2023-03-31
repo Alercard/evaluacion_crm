@@ -1,6 +1,6 @@
 <template>
     <h1>PARES (Vue Version)</h1>
-    <a href="/documentation?bash#pares-de-nmeros" target="_blank">Ver Documentación</a>
+    <a href="/#pares-de-nmeros" target="_blank">Ver Documentación</a>
     <div class="form-group p-fluid w-full" >
         <label>Data <strong style="color: red"> *</strong>:</label>
         <textarea
@@ -99,7 +99,11 @@ export default {
                 this.error = 'Debe ingresar los datos';
                 return;
             }
-            const url = '/api/peer/process';
+            const host = window.location.host
+            let prefix = (host !== 'localhost:8000' && host !== '127.0.0.1:8000') ?
+                            '/index.php' :
+                            ''
+            const url = `${prefix}/api/peer/process`;
             const data = {
                 data: this.data
             };
