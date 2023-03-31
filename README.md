@@ -15,6 +15,7 @@
 ## Ejecucion en ambiente de desarrollo
 - Ejecutar en una consola: npm run watch
 - Ejecutar en otra consola: php artisan serve
+- Acceder a la ruta /test/peers o /index.php/test/peers dependiendo de su configuracion local para acceder a la opcion desarrollada
 
 ## About Laravel
 
