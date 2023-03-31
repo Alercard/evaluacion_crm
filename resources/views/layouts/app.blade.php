@@ -11,17 +11,20 @@
         <!-- Styles -->
         <link rel="stylesheet" href="{{ asset('css/app.css') }}">
     </head>
-    <body id="app" class="container py-3">
-        <!-- Page Content -->
-        <div>
-          <Toast />
-          <Toast position="top-left" group="tl" />
-          <Toast position="bottom-left" group="bl" />
-          <Toast position="bottom-right" group="br" />
+    <body >
+        <div id="app" class="container py-3">
+            <!-- Page Content -->
+            <div>
+                <Toast />
+                <Toast position="top-left" group="tl" />
+                <Toast position="bottom-left" group="bl" />
+                <Toast position="bottom-right" group="br" />
+            </div>
+            <main>
+                {{ $slot }}
+            </main>
+
         </div>
-        <main>
-            {{ $slot }}
-        </main>
     </body>
     <!-- Scripts -->
     <script type="text/javascript" src="{{ mix('js/app.js') }}" ></script>
